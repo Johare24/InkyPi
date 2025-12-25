@@ -1,0 +1,33 @@
+{% extends "plugin.html" %}
+
+{% block content %}
+<div id="units-container" data-units="{{ units }}"></div>
+
+
+<div class="weather-dashboard">
+  <!-- Current Date -->
+  <div class="header">
+    <div class="title">{{ title }}</div>
+  </div>
+
+  <!-- Forecast Row -->
+  <div class="forecast">
+    {% for day in forecast[1:(plugin_settings.forecastDays | int) + 1] %}
+      <div class="forecast-day">
+        <div class="forecast-day-name">{{ day.day }}</div>
+        <img class="forecast-icon" src="{{day.icon}}" alt="{{ day.day }} Weather Icon">
+          {% for tide in day.tides %}
+              <span class="tide-time">{{ tide.Time[0:5] }} {{ tide.EventType }} {{ tide.Height }}m</span>
+          {% endfor %}
+          <span class = "tide-time">{{ day.weather.wind_arrow }}</span>
+          <span class = "tide-time">{{ day.weather.wind_speed_10m_max }}mph</span>
+          <span class = "tide-time">{{ day.weather.wind_gusts_10m_max }}mph</span>
+          <span class = "tide-time">AM:{{ day.marine.am_sea_state }}</span>
+          <span class = "tide-time">PM:{{ day.marine.pm_sea_state }}</span>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}

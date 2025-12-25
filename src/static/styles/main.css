@@ -247,6 +247,14 @@ body {
     transition: color 0.3s ease;
 }
 
+/* App title styling */
+.form-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
 /* Ensure form and settings container expand */
 .settings-form {
     display: flex;
