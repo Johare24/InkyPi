@@ -75,13 +75,12 @@ class InkySea(BasePlugin):
         else:
             last_refresh_time = now.strftime("%Y-%m-%d %I:%M %p")
         template_params["last_refresh_time"] = last_refresh_time
-        print(template_params)
         image = self.render_image(dimensions, "inkysea.html", "inkysea.css", template_params)
 
         if not image:
             raise RuntimeError("Failed to take screenshot, please check logs.")
         return image
-
+    
 
     
 
